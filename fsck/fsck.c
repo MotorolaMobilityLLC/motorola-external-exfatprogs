@@ -1429,7 +1429,7 @@ int main(int argc, char * const argv[])
 		exfat_err("failed to init locale/codeset\n");
 
 	opterr = 0;
-	while ((c = getopt_long(argc, argv, "rynpVvh", opts, NULL)) != EOF) {
+	while ((c = getopt_long(argc, argv, "raynpVvh", opts, NULL)) != EOF) {
 		switch (c) {
 		case 'n':
 			if (ui.options & FSCK_OPTS_REPAIR_ALL)
@@ -1441,6 +1441,7 @@ int main(int argc, char * const argv[])
 				usage(argv[0]);
 			ui.options |= FSCK_OPTS_REPAIR_ASK;
 			break;
+		case 'a':
 		case 'y':
 			if (ui.options & FSCK_OPTS_REPAIR_ALL)
 				usage(argv[0]);
