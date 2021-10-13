@@ -17,7 +17,6 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-ifeq ($(TARGET_USE_EXFATPROGS),true)
 LOCAL_PATH:= $(call my-dir)
 
 exfatprogs_common_cflags :=
@@ -39,9 +38,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := libexfatprogs
 LOCAL_MODULE_TAGS := optional
-ifeq (true,$(call math_gt_or_eq,$(PRODUCT_SHIPPING_API_LEVEL),30))
-LOCAL_PRODUCT_MODULE := true
-endif
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_SRC_FILES := $(libexfatprogs_src_files)
 LOCAL_CFLAGS := $(exfatprogs_common_cflags)
 LOCAL_C_INCLUDES := $(libexfatprogs_headers)
@@ -65,7 +62,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := mkfs.exfat
 LOCAL_MODULE_TAGS := optional
-LOCAL_PRODUCT_MODULE := true
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_SRC_FILES := $(mkexfatprogsfs_src_files)
 LOCAL_CFLAGS := $(exfatprogs_common_cflags)
 LOCAL_C_INCLUDES := $(mkexfatprogsfs_headers)
@@ -89,7 +86,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := fsck.exfat
 LOCAL_MODULE_TAGS := optional
-LOCAL_PRODUCT_MODULE := true
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_SRC_FILES := $(exfatprogsfsckp_src_files)
 LOCAL_CFLAGS := $(exfatprogs_common_cflags)
 LOCAL_C_INCLUDES := $(exfatprogsfsck_headers)
@@ -112,7 +109,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := tune.exfat
 LOCAL_MODULE_TAGS := optional
-LOCAL_PRODUCT_MODULE := true
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_SRC_FILES := $(tuneexfat_src_files)
 LOCAL_CFLAGS := $(exfatprogs_common_cflags)
 LOCAL_C_INCLUDES := $(tuneexfat_headers)
@@ -120,4 +117,3 @@ LOCAL_STATIC_LIBRARIES := libexfatprogs
 LOCAL_SHARED_LIBRARIES := $(libexfatprogs_shared_libraries)
 
 include $(BUILD_EXECUTABLE)
-endif
